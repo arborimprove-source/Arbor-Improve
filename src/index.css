@@ -1,0 +1,219 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: "Manrope", "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --color-forest: #b6ed65;
+  --color-forest-deep: #a4df4e;
+  --color-emerald: #20b889;
+  --color-botanical: #121e14;
+  --color-canvas: #090b09;
+  --color-secondary: #101310;
+  --color-surface: #151915;
+  --color-surface-elevated: #1a201a;
+  --color-field: #1a201a;
+  --color-rail: #101310;
+  --color-ink: #f3f5f0;
+  --color-ink-secondary: #a0a69e;
+  --color-bark: #d7a85e;
+  --color-sand: rgba(255, 255, 255, 0.07);
+  --color-muted: #70776f;
+  --color-thirsty: #d7a85e;
+  --color-thirsty-soft: #1b1710;
+  --color-danger: #e5534b;
+  --color-on-accent: #090b09;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    color: var(--color-ink);
+    background-color: var(--color-canvas);
+    color-scheme: dark;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    line-height: 1.55;
+    text-wrap: pretty;
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+
+  h1 {
+    letter-spacing: -0.025em;
+    line-height: 1.08;
+  }
+
+  h2 {
+    letter-spacing: -0.015em;
+  }
+
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: 2px solid rgba(243, 245, 240, 0.45);
+    outline-offset: 2px;
+  }
+
+  button,
+  a {
+    transition-property: transform, background-color, border-color, color, opacity, box-shadow;
+    transition-duration: 160ms;
+    transition-timing-function: cubic-bezier(0.32, 0.72, 0, 1);
+  }
+
+  button:not(:disabled):active {
+    transform: scale(0.97);
+  }
+
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .arbor-kicker {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+
+  .font-display-num {
+    font-family: var(--font-display);
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Restrained ambient green top illumination inspired by dark editorial references */
+.arbor-ambient-backdrop {
+  background-image: radial-gradient(
+    ellipse 72% 48% at 50% 0%,
+    rgba(182, 237, 101, 0.08) 0%,
+    rgba(32, 184, 137, 0.04) 44%,
+    transparent 76%
+  );
+  background-repeat: no-repeat;
+}
+
+.arbor-tree-horizon {
+  background:
+    radial-gradient(ellipse 68% 58% at 50% 58%, rgba(182, 237, 101, 0.09) 0%, rgba(32, 184, 137, 0.045) 45%, transparent 74%);
+}
+
+.arbor-tree-horizon-thirsty {
+  background:
+    radial-gradient(ellipse 68% 58% at 50% 58%, rgba(215, 168, 94, 0.1) 0%, rgba(215, 168, 94, 0.035) 45%, transparent 74%);
+}
+
+/* Modal & entrance motion */
+@keyframes arbor-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.97) translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.arbor-enter {
+  animation: arbor-enter 220ms cubic-bezier(0.32, 0.72, 0, 1) both;
+}
+
+@keyframes arbor-stage-enter {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.arbor-stage-enter {
+  animation: arbor-stage-enter 240ms cubic-bezier(0.32, 0.72, 0, 1) both;
+}
+
+/* Storyboarded check-in summary peak */
+.arbor-choreo-1 {
+  animation: arbor-enter 240ms cubic-bezier(0.32, 0.72, 0, 1) 0ms both;
+}
+
+.arbor-choreo-2 {
+  animation: arbor-enter 260ms cubic-bezier(0.32, 0.72, 0, 1) 80ms both;
+}
+
+.arbor-choreo-3 {
+  animation: arbor-enter 260ms cubic-bezier(0.32, 0.72, 0, 1) 160ms both;
+}
+
+@keyframes arbor-download-flash {
+  0% {
+    transform: scale(0.985);
+    box-shadow: 0 0 0 2px rgba(182, 237, 101, 0.75);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(182, 237, 101, 0);
+  }
+}
+
+.arbor-download-flash {
+  animation: arbor-download-flash 380ms cubic-bezier(0.32, 0.72, 0, 1) 1;
+}
+
+@keyframes arbor-sway {
+  0%, 100% {
+    transform: rotate(-0.7deg);
+  }
+  50% {
+    transform: rotate(0.7deg);
+  }
+}
+
+.animate-arbor-sway {
+  transform-box: fill-box;
+  transform-origin: bottom center;
+  animation: arbor-sway 6.5s ease-in-out infinite;
+}
+
+@keyframes arbor-petal-fall {
+  0% {
+    opacity: 0;
+    transform: translateY(-16px) rotate(0deg) scale(0.85);
+  }
+  15% {
+    opacity: 0.9;
+  }
+  85% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(150px) rotate(140deg) scale(1);
+  }
+}
+
+.animate-arbor-petal {
+  animation: arbor-petal-fall 2.4s cubic-bezier(0.16, 1, 0.3, 1) 1 forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

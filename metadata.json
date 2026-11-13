@@ -1,0 +1,6 @@
+{
+  "name": "Arbor Improve",
+  "description": "A warm, halal-friendly weekly progress tracker for small Muslim Instagram creators — watch your performance tree grow.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
